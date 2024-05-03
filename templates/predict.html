@@ -1,17 +1,37 @@
 <html>
 
 <head>
-    <script src="https://cdn.tailwindcss.com"></script>
-
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.2/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <style>
         body {
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            margin-top: 20px;
-            background-color: #ffffff;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #d9d9d9;
+        }
+
+        #predictCanvas {
+            margin-bottom: 20px;
+        }
+
+        #predictText {
+            margin-bottom: 20px;
+        }
+
+        #predictButton {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #predictButton:hover {
+            background-color: darkblue;
         }
     </style>
 </head>
@@ -70,15 +90,14 @@
 </script>
 
 <body onload="InitThis();">
-    <canvas id="predictCanvas" width="200" height="200" class="border-2 border-black"></canvas>
-    <div id="mensaje" style="font-family: Candara;font-size: 14px">Drawing...</div>
 
     <div style="position: relative;width: 200px; height: 200px;">
+        <div id="mensaje" style="font-family: Candara;font-size: 14px">Dibujando...</div>
+        <canvas id="predictCanvas" width="200" height="200" class="border-2 border-black"></canvas>
         <form method="post" onsubmit="javascript:prepareImg();" enctype="multipart/form-data">
-            <input id="numero" name="numero" type="hidden" value="">
             <input id="myImage" name="myImage" type="hidden" value="">
             <input id="predecir" type="submit" value="Predecir"
-                style="position: absolute;z-index: 1; left: 550px; top: 170px;width: 150px; height: 50px;background-color:#EAD3D3;border-radius: 10px;font-family: Candara;font-size: 14px"
+                style="position: absolute;z-index: 1; left: 550px; top: 170px;width: 150px; height: 50px;background-color:#c890f6;border-radius: 10px;font-family: Candara;font-size: 14px"
                 ;>
         </form>
 

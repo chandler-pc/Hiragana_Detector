@@ -130,11 +130,10 @@ def predict():
 
         if valor in etiquetas:
             kind = etiquetas[valor]
-            print(f"Kind: {kind}")
+            print(f"Predicción: {kind}")
         else:
-            print("El valor predicho no tiene una etiqueta asociada.")
+            print("No existe etiqueta para el valor predicho")
      
-        print("Image charged")
         return render_template('predict.html',value=kind)
     except Exception as e:
         print(f"An error occurred: {e}")
