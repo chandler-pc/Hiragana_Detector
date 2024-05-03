@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Files Ready to Download</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col justify-center items-center">
+    <h1 class="text-3xl font-bold mb-8">Files Ready to Download</h1>
+    <div class="space-y-4 justify-center items-center text-center">
+        <button onclick="location.href='/X.npy'"
+            class="btn-download">Download X</button>
+        <button onclick="location.href='/y.npy'"
+            class="btn-download">Download y</button>
+        <br>
+        <button onclick="location.href='/'"
+            class="btn-back">Back to index</button>
+    </div>
+
+    <style>
+        .btn-download,
+        .btn-back {
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-download {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .btn-download:hover {
+            background-color: #45A049;
+        }
+
+        .btn-back {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .btn-back:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</body>
+
+</html>

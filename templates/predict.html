@@ -1,0 +1,93 @@
+<html>
+
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<script>
+    var mousePressed = false;
+    var lastX, lastY;
+    var ctx;
+
+    function InitThis() {
+        ctx = document.getElementById('predictCanvas').getContext("2d");
+        //ctx.fillStyle = "white";  
+        //ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+        $('#predictCanvas').mousedown(function (e) {
+            mousePressed = true;
+            Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, false);
+        });
+
+        $('#predictCanvas').mousemove(function (e) {
+            if (mousePressed) {
+                Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, true);
+            }
+        });
+
+        $('#predictCanvas').mouseup(function (e) {
+            mousePressed = false;
+        });
+        $('#predictCanvas').mouseleave(function (e) {
+            mousePressed = false;
+        });
+    }
+
+    function Draw(x, y, isDown) {
+        if (isDown) {
+            ctx.beginPath();
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 11;
+            ctx.lineJoin = "round";
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(x, y);
+            ctx.closePath();
+            ctx.stroke();
+        }
+        lastX = x; lastY = y;
+    }
+
+    function clearArea() {
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    }
+    function prepareImg() {
+        var canvas = document.getElementById('predictCanvas');
+        document.getElementById('myImage').value = canvas.toDataURL();
+    }
+
+</script>
+
+<body onload="InitThis();">
+    <canvas id="predictCanvas" width="200" height="200" class="border-2 border-black"></canvas>
+    <div id="mensaje" style="font-family: Candara;font-size: 14px">Drawing...</div>
+
+    <div style="position: relative;width: 200px; height: 200px;">
+        <form method="post" onsubmit="javascript:prepareImg();" enctype="multipart/form-data">
+            <input id="numero" name="numero" type="hidden" value="">
+            <input id="myImage" name="myImage" type="hidden" value="">
+            <input id="predecir" type="submit" value="Predecir"
+                style="position: absolute;z-index: 1; left: 550px; top: 170px;width: 150px; height: 50px;background-color:#EAD3D3;border-radius: 10px;font-family: Candara;font-size: 14px"
+                ;>
+        </form>
+
+        <div style="position: relative;width: 200px; height: 200px;">
+            <h2 id="message_prediction"
+                style="position: absolute;  z-index: 1; left: 500px;width: 250px; top: 65px;font-size: 36px; font-family: Candara">
+                Predicción: {{value}}</h2>
+        </div>
+    </div>
+</body>
+
+</html>
