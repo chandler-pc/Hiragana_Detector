@@ -90,6 +90,7 @@
 </script>
 
 <body onload="InitThis();">
+    <a href="/"><button class="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Home</button></a>
 
     <div style="position: relative;width: 200px; height: 200px;">
         <div id="mensaje" style="font-family: Candara;font-size: 14px">Dibujando...</div>
@@ -97,8 +98,12 @@
         <form method="post" onsubmit="javascript:prepareImg();" enctype="multipart/form-data">
             <input id="myImage" name="myImage" type="hidden" value="">
             <input id="predecir" type="submit" value="Predecir"
-                style="position: absolute;z-index: 1; left: 550px; top: 170px;width: 150px; height: 50px;background-color:#c890f6;border-radius: 10px;font-family: Candara;font-size: 14px"
+                style="z-index: 1; left: 550px; top: 170px;width: 150px; height: 50px;background-color:#c890f6;border-radius: 10px;font-family: Candara;font-size: 14px"
                 ;>
+            <button onclick="javascript:clearArea();return false;"
+                class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2">
+                Clear
+            </button>
         </form>
 
         <div style="position: relative;width: 200px; height: 200px;">
